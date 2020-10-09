@@ -16,28 +16,25 @@ class UserTile extends StatelessWidget {
       leading: avatar,
       title: Text(user.name),
       subtitle: Text(user.email),
-      trailing: Icon(
-        Icons.remove_circle_outline,
-        color: Colors.redAccent,
-      ),
+      trailing: userTileIcons(),
     );
   }
 }
 
 Widget userTileIcons() {
-  return Row(
-    children: [
-      Icon(
-        Icons.remove_circle_outline,
-        color: Colors.redAccent,
-      ),
-      Padding(
-        padding: EdgeInsets.only(left: 20),
-        child: Icon(
-          Icons.edit,
-          color: Colors.blueAccent,
+  return Container(
+    width: 100,
+    child: Row(
+      children: [
+        IconButton(
+          icon: Icon(Icons.edit, color: Colors.blueAccent),
+          onPressed: () {},
         ),
-      )
-    ],
+        IconButton(
+          icon: Icon(Icons.delete, color: Colors.redAccent),
+          onPressed: () {},
+        ),
+      ],
+    ),
   );
 }
