@@ -49,4 +49,11 @@ class Users with ChangeNotifier {
 
     notifyListeners();
   }
+
+  void removeUser(String id) {
+    if (id != null) {
+      _items.remove(id);
+      notifyListeners();
+    }
+  }
 }
