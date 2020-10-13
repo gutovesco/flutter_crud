@@ -35,8 +35,34 @@ class UserTile extends StatelessWidget {
             IconButton(
               icon: Icon(Icons.delete, color: Colors.redAccent),
               onPressed: () {
-                users.removeUser(user.id);
-                print('Dawdawdadaw');
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text('Excluir usuario'),
+                    content:
+                        Text("Você tem certeza que deseja excluir o usuário?"),
+                    actions: [
+                      FlatButton(
+                        color: Colors.redAccent,
+                        child: Text('Nao'),
+                        onPressed: () {
+                          Navigator.of(context).pop(false);
+                        },
+                      ),
+                      FlatButton(
+                        color: Colors.greenAccent,
+                        child: Text('Sim'),
+                        onPressed: () {
+                          Navigator.of(context).pop(true);
+                        },
+                      ),
+                    ],
+                  ),
+                ).then((confirmed) {
+                  if (confirmed) {
+                    users.removeUser(user.id);
+                  }
+                });
               },
             ),
           ],

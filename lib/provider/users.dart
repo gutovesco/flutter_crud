@@ -25,7 +25,7 @@ class Users with ChangeNotifier {
     }
 
     if (user.id != null &&
-        user.id.trim().isEmpty &&
+        user.id.trim().isNotEmpty &&
         _items.containsKey(user.id)) {
       _items.update(
           user.id,
